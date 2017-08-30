@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF5B33B31F5783F1005EEC7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33B21F5783F1005EEC7C /* AppDelegate.swift */; };
+		BF5B33B51F5783F1005EEC7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33B41F5783F1005EEC7C /* ViewController.swift */; };
+		BF5B33B81F5783F1005EEC7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B33B61F5783F1005EEC7C /* Main.storyboard */; };
+		BF5B33BB1F5783F1005EEC7C /* T9_Dialer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33B91F5783F1005EEC7C /* T9_Dialer.xcdatamodeld */; };
+		BF5B33BD1F5783F1005EEC7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5B33BC1F5783F1005EEC7C /* Assets.xcassets */; };
+		BF5B33C01F5783F1005EEC7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B33BE1F5783F1005EEC7C /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BF5B33AF1F5783F1005EEC7C /* T9 Dialer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "T9 Dialer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5B33B21F5783F1005EEC7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF5B33B41F5783F1005EEC7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF5B33B71F5783F1005EEC7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF5B33BA1F5783F1005EEC7C /* T9_Dialer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = T9_Dialer.xcdatamodel; sourceTree = "<group>"; };
+		BF5B33BC1F5783F1005EEC7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF5B33BF1F5783F1005EEC7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF5B33C11F5783F1005EEC7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF5B33AC1F5783F1005EEC7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF5B33A61F5783F1005EEC7C = {
+			isa = PBXGroup;
+			children = (
+				BF5B33B11F5783F1005EEC7C /* T9 Dialer */,
+				BF5B33B01F5783F1005EEC7C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF5B33B01F5783F1005EEC7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF5B33AF1F5783F1005EEC7C /* T9 Dialer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF5B33B11F5783F1005EEC7C /* T9 Dialer */ = {
+			isa = PBXGroup;
+			children = (
+				BF5B33B21F5783F1005EEC7C /* AppDelegate.swift */,
+				BF5B33B41F5783F1005EEC7C /* ViewController.swift */,
+				BF5B33B61F5783F1005EEC7C /* Main.storyboard */,
+				BF5B33BC1F5783F1005EEC7C /* Assets.xcassets */,
+				BF5B33BE1F5783F1005EEC7C /* LaunchScreen.storyboard */,
+				BF5B33C11F5783F1005EEC7C /* Info.plist */,
+				BF5B33B91F5783F1005EEC7C /* T9_Dialer.xcdatamodeld */,
+			);
+			path = "T9 Dialer";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF5B33AE1F5783F1005EEC7C /* T9 Dialer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF5B33C41F5783F1005EEC7C /* Build configuration list for PBXNativeTarget "T9 Dialer" */;
+			buildPhases = (
+				BF5B33AB1F5783F1005EEC7C /* Sources */,
+				BF5B33AC1F5783F1005EEC7C /* Frameworks */,
+				BF5B33AD1F5783F1005EEC7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "T9 Dialer";
+			productName = "T9 Dialer";
+			productReference = BF5B33AF1F5783F1005EEC7C /* T9 Dialer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF5B33A71F5783F1005EEC7C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Jun Lee";
+				TargetAttributes = {
+					BF5B33AE1F5783F1005EEC7C = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BF5B33AA1F5783F1005EEC7C /* Build configuration list for PBXProject "T9 Dialer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF5B33A61F5783F1005EEC7C;
+			productRefGroup = BF5B33B01F5783F1005EEC7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF5B33AE1F5783F1005EEC7C /* T9 Dialer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF5B33AD1F5783F1005EEC7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5B33C01F5783F1005EEC7C /* LaunchScreen.storyboard in Resources */,
+				BF5B33BD1F5783F1005EEC7C /* Assets.xcassets in Resources */,
+				BF5B33B81F5783F1005EEC7C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF5B33AB1F5783F1005EEC7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5B33BB1F5783F1005EEC7C /* T9_Dialer.xcdatamodeld in Sources */,
+				BF5B33B51F5783F1005EEC7C /* ViewController.swift in Sources */,
+				BF5B33B31F5783F1005EEC7C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BF5B33B61F5783F1005EEC7C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF5B33B71F5783F1005EEC7C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF5B33BE1F5783F1005EEC7C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF5B33BF1F5783F1005EEC7C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF5B33C21F5783F1005EEC7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF5B33C31F5783F1005EEC7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF5B33C51F5783F1005EEC7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "T9 Dialer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "summerProject.T9-Dialer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BF5B33C61F5783F1005EEC7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "T9 Dialer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "summerProject.T9-Dialer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF5B33AA1F5783F1005EEC7C /* Build configuration list for PBXProject "T9 Dialer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5B33C21F5783F1005EEC7C /* Debug */,
+				BF5B33C31F5783F1005EEC7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF5B33C41F5783F1005EEC7C /* Build configuration list for PBXNativeTarget "T9 Dialer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5B33C51F5783F1005EEC7C /* Debug */,
+				BF5B33C61F5783F1005EEC7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BF5B33B91F5783F1005EEC7C /* T9_Dialer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BF5B33BA1F5783F1005EEC7C /* T9_Dialer.xcdatamodel */,
+			);
+			currentVersion = BF5B33BA1F5783F1005EEC7C /* T9_Dialer.xcdatamodel */;
+			path = T9_Dialer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BF5B33A71F5783F1005EEC7C /* Project object */;
+}
