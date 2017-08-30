@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		BF5B33B31F5783F1005EEC7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33B21F5783F1005EEC7C /* AppDelegate.swift */; };
-		BF5B33B51F5783F1005EEC7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33B41F5783F1005EEC7C /* ViewController.swift */; };
 		BF5B33B81F5783F1005EEC7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B33B61F5783F1005EEC7C /* Main.storyboard */; };
 		BF5B33BB1F5783F1005EEC7C /* T9_Dialer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33B91F5783F1005EEC7C /* T9_Dialer.xcdatamodeld */; };
 		BF5B33BD1F5783F1005EEC7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5B33BC1F5783F1005EEC7C /* Assets.xcassets */; };
 		BF5B33C01F5783F1005EEC7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B33BE1F5783F1005EEC7C /* LaunchScreen.storyboard */; };
+		BF5B33C81F578406005EEC7C /* T9ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33C71F578406005EEC7C /* T9ViewController.swift */; };
+		BF5B33CA1F5787B8005EEC7C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33C91F5787B8005EEC7C /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF5B33AF1F5783F1005EEC7C /* T9 Dialer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "T9 Dialer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5B33B21F5783F1005EEC7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF5B33B41F5783F1005EEC7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF5B33B71F5783F1005EEC7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF5B33BA1F5783F1005EEC7C /* T9_Dialer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = T9_Dialer.xcdatamodel; sourceTree = "<group>"; };
 		BF5B33BC1F5783F1005EEC7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5B33BF1F5783F1005EEC7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF5B33C11F5783F1005EEC7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5B33C71F578406005EEC7C /* T9ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T9ViewController.swift; sourceTree = "<group>"; };
+		BF5B33C91F5787B8005EEC7C /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = ../Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,24 @@
 		BF5B33B11F5783F1005EEC7C /* T9 Dialer */ = {
 			isa = PBXGroup;
 			children = (
-				BF5B33B21F5783F1005EEC7C /* AppDelegate.swift */,
-				BF5B33B41F5783F1005EEC7C /* ViewController.swift */,
 				BF5B33B61F5783F1005EEC7C /* Main.storyboard */,
-				BF5B33BC1F5783F1005EEC7C /* Assets.xcassets */,
-				BF5B33BE1F5783F1005EEC7C /* LaunchScreen.storyboard */,
-				BF5B33C11F5783F1005EEC7C /* Info.plist */,
+				BF5B33C71F578406005EEC7C /* T9ViewController.swift */,
+				BF5B33C91F5787B8005EEC7C /* Contact.swift */,
 				BF5B33B91F5783F1005EEC7C /* T9_Dialer.xcdatamodeld */,
+				BF5B33CB1F578816005EEC7C /* Supporting Files */,
 			);
 			path = "T9 Dialer";
+			sourceTree = "<group>";
+		};
+		BF5B33CB1F578816005EEC7C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF5B33B21F5783F1005EEC7C /* AppDelegate.swift */,
+				BF5B33BC1F5783F1005EEC7C /* Assets.xcassets */,
+				BF5B33C11F5783F1005EEC7C /* Info.plist */,
+				BF5B33BE1F5783F1005EEC7C /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF5B33CA1F5787B8005EEC7C /* Contact.swift in Sources */,
+				BF5B33C81F578406005EEC7C /* T9ViewController.swift in Sources */,
 				BF5B33BB1F5783F1005EEC7C /* T9_Dialer.xcdatamodeld in Sources */,
-				BF5B33B51F5783F1005EEC7C /* ViewController.swift in Sources */,
 				BF5B33B31F5783F1005EEC7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
