@@ -145,7 +145,7 @@ class T9ViewController: UIViewController {
     }
 }
 
-
+//implementing tableView logic for contact search list
 extension T9ViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -173,6 +173,7 @@ extension T9ViewController: UISearchBarDelegate{
     //what happens when the user cancels search,
     //should clear search field and display all items
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
         search()
         searchBar.endEditing(true)
         searchBar.resignFirstResponder()
