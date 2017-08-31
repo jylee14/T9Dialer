@@ -14,6 +14,7 @@ class T9ViewController: UIViewController {
     //OUTLET connections
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var syncButton: UIBarButtonItem!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     //APPLICATION LOGIC VARIABLES
     fileprivate let context = AppDelegate.viewContext   //database context
@@ -29,6 +30,8 @@ class T9ViewController: UIViewController {
     //tells the app to look through the stock contacts and initialize each contact with t9 value
     @IBAction func syncContacts(_ sender: Any) {
         if sender is UIBarButtonItem{
+            spinner.startAnimating()
+            
             let contacts = CNContactStore() //contact store
             var permission = CNContactStore.authorizationStatus(for: .contacts) //does the app have permission right now?
             
@@ -50,7 +53,7 @@ class T9ViewController: UIViewController {
             }
             
             if permission == .authorized{
-                DispatchQueue.global(qos: .userInitiated).async{
+                DispatchQueue.global(qos: .userInitiated).async{ [unowned self] in
                     var contactsArray:[CNContact] = []   //fetched contacts
                     let contactKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]    //fetch key
                     let contactsRequest = CNContactFetchRequest(keysToFetch: contactKeys)   //fetch request
@@ -64,9 +67,44 @@ class T9ViewController: UIViewController {
                         //alert the user of failure
                     }
                     
+                    let assignedContacts = self.assignT9ValueTo(contactsArray)
+                    for contact in assignedContacts{
+                        let person = Contact(context: self.context)
+                        person.name = contact.name
+                        person.number = contact.number
+                        person.t9 = contact.t9
+                        
+                        try? self.context.save()
+                    }
+                    
                 }
             }
         }
+    }
+    
+    private let T9Value: [Character: Int] = [
+        "a": 2, "b": 2, "c": 2,
+        "d": 3, "e": 3, "f": 3,
+        "g": 4, "h": 4, "i": 4,
+        "j": 5, "k": 5, "l": 5,
+        "m": 6, "n": 6, "o": 6,
+        "p": 7, "q": 7, "r": 7, "s": 7,
+        "t": 8, "u": 8, "v": 8,
+        "w": 9, "x": 9, "y": 9, "z": 9
+    ]
+    private func assignT9ValueTo(_ contacts: [CNContact])->[(name: String, number: String, t9: String)]{
+        var T9ContactsArray:[(String, String, String)] = []
+        for contact in contacts{
+            let name = contact.givenName.lowercased() + contact.familyName.lowercased() //dictionary expects lower cased string
+            var t9value = ""
+            
+            for char in name.characters{
+                t9value.append(String(T9Value[char]!))
+            }
+            T9ContactsArray.append((name, contact.phoneNumbers[0].value.stringValue, t9value))
+        }
+        
+        return T9ContactsArray
     }
 }
 
