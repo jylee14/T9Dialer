@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Contacts
 import CoreData
 
 class T9ViewController: UIViewController {
     //OUTLET connections
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var syncButton: UIBarButtonItem!
     
     //APPLICATION LOGIC VARIABLES
     fileprivate let context = AppDelegate.viewContext   //database context
@@ -22,6 +24,49 @@ class T9ViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         searchBar.delegate = self
+    }
+    
+    //tells the app to look through the stock contacts and initialize each contact with t9 value
+    @IBAction func syncContacts(_ sender: Any) {
+        if sender is UIBarButtonItem{
+            let contacts = CNContactStore() //contact store
+            var permission = CNContactStore.authorizationStatus(for: .contacts) //does the app have permission right now?
+            
+            guard permission != .denied && permission != .restricted else {
+                //alert the user that this app needs contacts permission
+                return
+            }
+            
+            if permission == .notDetermined{    //ask we dont have permission currently
+                contacts.requestAccess(for: .contacts){(status, error) in
+                    if status {
+                        permission = .authorized
+                    }else{
+                        permission = .denied
+                        //alert the user that the app needs contact access
+                        return
+                    }
+                }
+            }
+            
+            if permission == .authorized{
+                DispatchQueue.global(qos: .userInitiated).async{
+                    var contactsArray:[CNContact] = []   //fetched contacts
+                    let contactKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]    //fetch key
+                    let contactsRequest = CNContactFetchRequest(keysToFetch: contactKeys)   //fetch request
+                    
+                    do{
+                        try contacts.enumerateContacts(with: contactsRequest){ (contact, _) in
+                            contactsArray.append(contact)
+                        }
+                    }catch{
+                        print("failed to sync contacts")
+                        //alert the user of failure
+                    }
+                    
+                }
+            }
+        }
     }
 }
 
