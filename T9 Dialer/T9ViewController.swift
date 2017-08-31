@@ -68,7 +68,10 @@ class T9ViewController: UIViewController {
                 
                 DispatchQueue.global(qos: .userInitiated).async{ [unowned self] in
                     var contactsArray:[CNContact] = []   //fetched contacts
-                    let contactKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]    //fetch key
+                    let contactKeys = [CNContactGivenNameKey,
+                                       CNContactFamilyNameKey,
+                                       CNContactPhoneNumbersKey,
+                                       CNContactImageDataKey] as [CNKeyDescriptor]    //fetch key
                     let contactsRequest = CNContactFetchRequest(keysToFetch: contactKeys)   //fetch request
                     
                     do{
@@ -86,6 +89,7 @@ class T9ViewController: UIViewController {
                         person.name = contact.name
                         person.number = contact.number
                         person.t9 = contact.t9
+                        person.photo = contact.photo as NSData?
                         
                         try? self.context.save()
                     }
@@ -119,8 +123,8 @@ class T9ViewController: UIViewController {
         "t": 8, "u": 8, "v": 8,
         "w": 9, "x": 9, "y": 9, "z": 9
     ]
-    private func assignT9ValueTo(_ contacts: [CNContact])->[(name: String, number: String, t9: String)]{
-        var T9ContactsArray:[(String, String, String)] = []
+    private func assignT9ValueTo(_ contacts: [CNContact])->[ContactItem]{
+        var T9ContactsArray:[ContactItem] = []
         for contact in contacts{
             let name = contact.givenName.lowercased() + " " + contact.familyName.lowercased() //dictionary expects lower cased string
             var t9value = ""
@@ -129,7 +133,10 @@ class T9ViewController: UIViewController {
                 if char == " " { continue }
                 t9value.append(String(T9Value[char]!))
             }
-            T9ContactsArray.append((name, contact.phoneNumbers[0].value.stringValue, t9value))
+            
+            guard contact.phoneNumbers.count > 0 else { continue }  //theres no phone number, don't process this one 
+            let tempContact = ContactItem(name: name, number: contact.phoneNumbers[0].value.stringValue, t9: t9value, photo: contact.imageData)
+            T9ContactsArray.append(tempContact)
         }
         
         return T9ContactsArray
@@ -158,9 +165,12 @@ extension T9ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Contact", for: indexPath)
         
-        if let contacts = searchResult{
-            cell.textLabel?.text = contacts[indexPath.row].name
-            cell.detailTextLabel?.text = contacts[indexPath.row].number
+        if let contacts = searchResult, let contactCell = cell as? ContactCell{
+            if let imageData = contacts[indexPath.row].photo {
+                contactCell.contactPhoto.image = UIImage(data: imageData as Data)
+            }
+            contactCell.name.text = contacts[indexPath.row].name
+            contactCell.number.text = contacts[indexPath.row].number
         }
         
         return cell
