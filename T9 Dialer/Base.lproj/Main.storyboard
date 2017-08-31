@@ -26,7 +26,7 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mhL-PB-j9Q">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                         <scopeButtonTitles>
                                             <string>Title</string>
                                         </scopeButtonTitles>
@@ -63,8 +63,8 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-5Z-3am">
-                                <rect key="frame" x="0.0" y="323" width="375" height="20"/>
+                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-5Z-3am">
+                                <rect key="frame" x="0.0" y="315" width="375" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,6 +86,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contactsView" destination="WUv-Y9-Qhu" id="XM1-OO-MJs"/>
                         <outlet property="searchBar" destination="mhL-PB-j9Q" id="Z9l-m3-kWX"/>
                         <outlet property="spinner" destination="V9I-5Z-3am" id="z9M-wz-AU1"/>
                         <outlet property="syncButton" destination="Z1s-5H-vOC" id="QGK-ag-4wN"/>

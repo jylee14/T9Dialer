@@ -15,21 +15,32 @@ class T9ViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var syncButton: UIBarButtonItem!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var contactsView: UITableView!
     
     //APPLICATION LOGIC VARIABLES
     fileprivate let context = AppDelegate.viewContext   //database context
     fileprivate var searchBarTimer = Timer()    //to manage DB lookups
+    fileprivate var currentSearchNumber = ""    //what the user is current searching for
+    fileprivate var searchResult: [Contact]? = nil{
+        didSet{
+            contactsView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         searchBar.delegate = self
+        contactsView.delegate = self
+        contactsView.dataSource = self
     }
+    
     
     //tells the app to look through the stock contacts and initialize each contact with t9 value
     @IBAction func syncContacts(_ sender: Any) {
         if sender is UIBarButtonItem{
+            spinner.isHidden = false
             spinner.startAnimating()
             
             let contacts = CNContactStore() //contact store
@@ -53,6 +64,8 @@ class T9ViewController: UIViewController {
             }
             
             if permission == .authorized{
+                clearDatabase() //only while i figure out how to make the DB sync non-duplicate entities
+                
                 DispatchQueue.global(qos: .userInitiated).async{ [unowned self] in
                     var contactsArray:[CNContact] = []   //fetched contacts
                     let contactKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]    //fetch key
@@ -76,10 +89,24 @@ class T9ViewController: UIViewController {
                         
                         try? self.context.save()
                     }
-                    
+                 
+                    DispatchQueue.main.async { [weak self] in
+                        self?.spinner.isHidden = true
+                        self?.spinner.stopAnimating()
+                    }
                 }
             }
         }
+    }
+    
+    private func clearDatabase(){
+        let fetchRequest:NSFetchRequest<Contact> = Contact.fetchRequest()
+        do{
+            let results = try context.fetch(fetchRequest)
+            for contact in results{
+                context.delete(contact as NSManagedObject)
+            }
+        }catch{}
     }
     
     private let T9Value: [Character: Int] = [
@@ -95,10 +122,11 @@ class T9ViewController: UIViewController {
     private func assignT9ValueTo(_ contacts: [CNContact])->[(name: String, number: String, t9: String)]{
         var T9ContactsArray:[(String, String, String)] = []
         for contact in contacts{
-            let name = contact.givenName.lowercased() + contact.familyName.lowercased() //dictionary expects lower cased string
+            let name = contact.givenName.lowercased() + " " + contact.familyName.lowercased() //dictionary expects lower cased string
             var t9value = ""
             
             for char in name.characters{
+                if char == " " { continue }
                 t9value.append(String(T9Value[char]!))
             }
             T9ContactsArray.append((name, contact.phoneNumbers[0].value.stringValue, t9value))
@@ -106,12 +134,46 @@ class T9ViewController: UIViewController {
         
         return T9ContactsArray
     }
+    
+    //search for the given numeric sequence
+    fileprivate func search(_ text: String = ""){
+        let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true), NSSortDescriptor(key: "number", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "t9 contains %@", text)
+        
+        searchResult = try? context.fetch(fetchRequest)
+    }
 }
 
+
+extension T9ViewController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResult?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Contact", for: indexPath)
+        
+        if let contacts = searchResult{
+            cell.textLabel?.text = contacts[indexPath.row].name
+            cell.detailTextLabel?.text = contacts[indexPath.row].number
+        }
+        
+        return cell
+    }
+}
+
+
+//implementing search bar capabilities
 extension T9ViewController: UISearchBarDelegate{
     //what happens when the user cancels search,
     //should clear search field and display all items
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        search()
         searchBar.endEditing(true)
         searchBar.resignFirstResponder()
     }
@@ -124,12 +186,18 @@ extension T9ViewController: UISearchBarDelegate{
     
     //the searchbar is no longer key item, stop the timer to minimize performance hit
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        search()
         searchBarTimer.invalidate()
     }
     
     //function that searches for the term in the searchbox
     @objc private func startSearch(){
-        print("search...")
+        if let searchBarText = searchBar.text{
+            if searchBarText != currentSearchNumber{
+                currentSearchNumber = searchBarText
+                search(searchBarText)
+            }
+        }
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
