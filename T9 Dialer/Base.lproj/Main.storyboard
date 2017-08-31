@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,33 +32,68 @@
                                             <string>Title</string>
                                         </scopeButtonTitles>
                                     </searchBar>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WUv-Y9-Qhu">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WUv-Y9-Qhu">
                                         <rect key="frame" x="0.0" y="44" width="375" height="559"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Contact" textLabel="vMN-2q-R2l" detailTextLabel="Uec-MW-e8h" style="IBUITableViewCellStyleSubtitle" id="TCg-8C-Pha">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Contact" rowHeight="64" id="TCg-8C-Pha" customClass="ContactCell" customModule="T9_Dialer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TCg-8C-Pha" id="NJA-hB-zJp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vMN-2q-R2l">
-                                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpy-88-1Ww">
+                                                            <rect key="frame" x="101" y="0.0" width="149" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="55y-Rg-Qwx"/>
+                                                                <constraint firstAttribute="width" constant="149" id="REI-RL-VNJ"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uec-MW-e8h">
-                                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BwS-bS-h7H">
+                                                            <rect key="frame" x="8" y="0.0" width="85" height="64"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQT-G8-KSa">
+                                                            <rect key="frame" x="110" y="37" width="149" height="27"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6s-aN-HTY">
+                                                            <rect key="frame" x="267" y="0.0" width="100" height="64"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="6AF-J4-JcN"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Call"/>
+                                                            <connections>
+                                                                <action selector="call:" destination="TCg-8C-Pha" eventType="touchUpInside" id="9Q9-Gy-xdN"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="BwS-bS-h7H" firstAttribute="top" secondItem="U6s-aN-HTY" secondAttribute="top" id="0pC-Ya-TBY"/>
+                                                        <constraint firstItem="KQT-G8-KSa" firstAttribute="top" secondItem="fpy-88-1Ww" secondAttribute="bottom" constant="16" id="2Jy-Nb-Hg3"/>
+                                                        <constraint firstItem="BwS-bS-h7H" firstAttribute="leading" secondItem="NJA-hB-zJp" secondAttribute="leadingMargin" id="5m1-md-wpQ"/>
+                                                        <constraint firstItem="U6s-aN-HTY" firstAttribute="trailing" secondItem="NJA-hB-zJp" secondAttribute="trailingMargin" id="TuS-Mh-hhP"/>
+                                                        <constraint firstItem="fpy-88-1Ww" firstAttribute="top" secondItem="NJA-hB-zJp" secondAttribute="topMargin" constant="-8" id="ZxD-bB-zlM"/>
+                                                        <constraint firstItem="fpy-88-1Ww" firstAttribute="leading" secondItem="BwS-bS-h7H" secondAttribute="trailing" constant="8" symbolic="YES" id="a3R-4X-hqX"/>
+                                                        <constraint firstItem="BwS-bS-h7H" firstAttribute="bottom" secondItem="KQT-G8-KSa" secondAttribute="bottom" id="bKB-Gy-5E0"/>
+                                                        <constraint firstItem="BwS-bS-h7H" firstAttribute="top" secondItem="NJA-hB-zJp" secondAttribute="top" id="gHk-GS-ZON"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="U6s-aN-HTY" secondAttribute="bottom" constant="-8" id="nnA-Un-iox"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="KQT-G8-KSa" secondAttribute="bottom" constant="-8.5" id="pUI-B7-kzU"/>
+                                                        <constraint firstItem="KQT-G8-KSa" firstAttribute="trailing" secondItem="fpy-88-1Ww" secondAttribute="trailing" constant="9" id="qL8-wl-Wfl"/>
+                                                        <constraint firstItem="KQT-G8-KSa" firstAttribute="leading" secondItem="fpy-88-1Ww" secondAttribute="leading" constant="9" id="ys2-5J-gU8"/>
+                                                        <constraint firstItem="KQT-G8-KSa" firstAttribute="leading" secondItem="NJA-hB-zJp" secondAttribute="leading" constant="110" id="zQO-CB-ve3"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="contactPhoto" destination="BwS-bS-h7H" id="DNB-SF-3OQ"/>
+                                                    <outlet property="name" destination="fpy-88-1Ww" id="y3n-tH-KAB"/>
+                                                    <outlet property="number" destination="KQT-G8-KSa" id="TuK-6q-ogh"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -94,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="793"/>
+            <point key="canvasLocation" x="904.79999999999995" y="792.95352323838085"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iA5-tb-BKd">
