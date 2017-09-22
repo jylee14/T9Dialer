@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mXS-8w-piQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mXS-8w-piQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,29 +25,26 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SAR-Br-jKU">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mhL-PB-j9Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
-                                        <scopeButtonTitles>
-                                            <string>Title</string>
-                                        </scopeButtonTitles>
+                                    <searchBar contentMode="redraw" text="" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mhL-PB-j9Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="search" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WUv-Y9-Qhu">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="559"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="547"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Contact" rowHeight="64" id="TCg-8C-Pha" customClass="ContactCell" customModule="T9_Dialer" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TCg-8C-Pha" id="NJA-hB-zJp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpy-88-1Ww">
-                                                            <rect key="frame" x="101" y="0.0" width="149" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpy-88-1Ww">
+                                                            <rect key="frame" x="110" y="0.0" width="140" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="55y-Rg-Qwx"/>
-                                                                <constraint firstAttribute="width" constant="149" id="REI-RL-VNJ"/>
+                                                                <constraint firstAttribute="width" constant="140" id="REI-RL-VNJ"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -56,7 +53,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BwS-bS-h7H">
                                                             <rect key="frame" x="8" y="0.0" width="85" height="64"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQT-G8-KSa">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQT-G8-KSa">
                                                             <rect key="frame" x="110" y="37" width="149" height="27"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -79,13 +76,13 @@
                                                         <constraint firstItem="BwS-bS-h7H" firstAttribute="leading" secondItem="NJA-hB-zJp" secondAttribute="leadingMargin" id="5m1-md-wpQ"/>
                                                         <constraint firstItem="U6s-aN-HTY" firstAttribute="trailing" secondItem="NJA-hB-zJp" secondAttribute="trailingMargin" id="TuS-Mh-hhP"/>
                                                         <constraint firstItem="fpy-88-1Ww" firstAttribute="top" secondItem="NJA-hB-zJp" secondAttribute="topMargin" constant="-8" id="ZxD-bB-zlM"/>
-                                                        <constraint firstItem="fpy-88-1Ww" firstAttribute="leading" secondItem="BwS-bS-h7H" secondAttribute="trailing" constant="8" symbolic="YES" id="a3R-4X-hqX"/>
+                                                        <constraint firstItem="fpy-88-1Ww" firstAttribute="leading" secondItem="BwS-bS-h7H" secondAttribute="trailing" constant="17" id="a3R-4X-hqX"/>
                                                         <constraint firstItem="BwS-bS-h7H" firstAttribute="bottom" secondItem="KQT-G8-KSa" secondAttribute="bottom" id="bKB-Gy-5E0"/>
                                                         <constraint firstItem="BwS-bS-h7H" firstAttribute="top" secondItem="NJA-hB-zJp" secondAttribute="top" id="gHk-GS-ZON"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="U6s-aN-HTY" secondAttribute="bottom" constant="-8" id="nnA-Un-iox"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="KQT-G8-KSa" secondAttribute="bottom" constant="-8.5" id="pUI-B7-kzU"/>
                                                         <constraint firstItem="KQT-G8-KSa" firstAttribute="trailing" secondItem="fpy-88-1Ww" secondAttribute="trailing" constant="9" id="qL8-wl-Wfl"/>
-                                                        <constraint firstItem="KQT-G8-KSa" firstAttribute="leading" secondItem="fpy-88-1Ww" secondAttribute="leading" constant="9" id="ys2-5J-gU8"/>
+                                                        <constraint firstItem="KQT-G8-KSa" firstAttribute="leading" secondItem="fpy-88-1Ww" secondAttribute="leading" id="ys2-5J-gU8"/>
                                                         <constraint firstItem="KQT-G8-KSa" firstAttribute="leading" secondItem="NJA-hB-zJp" secondAttribute="leading" constant="110" id="zQO-CB-ve3"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
@@ -138,7 +135,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mXS-8w-piQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fkg-mo-SUZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

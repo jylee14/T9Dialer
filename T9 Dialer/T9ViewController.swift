@@ -68,10 +68,7 @@ class T9ViewController: UIViewController {
                 
                 DispatchQueue.global(qos: .userInitiated).async{ [unowned self] in
                     var contactsArray:[CNContact] = []   //fetched contacts
-                    let contactKeys = [CNContactGivenNameKey,
-                                       CNContactFamilyNameKey,
-                                       CNContactPhoneNumbersKey,
-                                       CNContactImageDataKey] as [CNKeyDescriptor]    //fetch key
+                    let contactKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey] as [CNKeyDescriptor]    //fetch key
                     let contactsRequest = CNContactFetchRequest(keysToFetch: contactKeys)   //fetch request
                     
                     do{
@@ -95,8 +92,8 @@ class T9ViewController: UIViewController {
                     }
                  
                     DispatchQueue.main.async { [weak self] in
-                        self?.spinner.isHidden = true
                         self?.spinner.stopAnimating()
+                        self?.spinner.isHidden = true
                     }
                 }
             }
@@ -121,8 +118,8 @@ class T9ViewController: UIViewController {
         "m": 6, "n": 6, "o": 6,
         "p": 7, "q": 7, "r": 7, "s": 7,
         "t": 8, "u": 8, "v": 8,
-        "w": 9, "x": 9, "y": 9, "z": 9
-    ]
+        "w": 9, "x": 9, "y": 9, "z": 9]
+    
     private func assignT9ValueTo(_ contacts: [CNContact])->[ContactItem]{
         var T9ContactsArray:[ContactItem] = []
         for contact in contacts{
@@ -168,6 +165,8 @@ extension T9ViewController: UITableViewDelegate, UITableViewDataSource{
         if let contacts = searchResult, let contactCell = cell as? ContactCell{
             if let imageData = contacts[indexPath.row].photo {
                 contactCell.contactPhoto.image = UIImage(data: imageData as Data)
+            }else{
+                contactCell.contactPhoto.image = #imageLiteral(resourceName: "default")
             }
             contactCell.name.text = contacts[indexPath.row].name
             contactCell.number.text = contacts[indexPath.row].number
