@@ -86,7 +86,7 @@ class T9ViewController: UIViewController {
                         person.name = contact.name
                         person.number = contact.number
                         person.t9 = contact.t9
-                        person.photo = contact.photo as NSData?
+                        person.photo = contact.photo
                         
                         try? self.context.save()
                     }
