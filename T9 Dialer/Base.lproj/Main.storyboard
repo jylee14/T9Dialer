@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mXS-8w-piQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mXS-8w-piQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,7 +40,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpy-88-1Ww">
-                                                            <rect key="frame" x="110" y="0.0" width="140" height="21"/>
+                                                            <rect key="frame" x="110" y="3" width="140" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="55y-Rg-Qwx"/>
                                                                 <constraint firstAttribute="width" constant="140" id="REI-RL-VNJ"/>
@@ -51,16 +50,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BwS-bS-h7H">
-                                                            <rect key="frame" x="8" y="0.0" width="85" height="64"/>
+                                                            <rect key="frame" x="15" y="0.0" width="78" height="61.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQT-G8-KSa">
-                                                            <rect key="frame" x="110" y="37" width="149" height="27"/>
+                                                            <rect key="frame" x="110" y="40" width="149" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6s-aN-HTY">
-                                                            <rect key="frame" x="267" y="0.0" width="100" height="64"/>
+                                                            <rect key="frame" x="260" y="0.0" width="100" height="61"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="6AF-J4-JcN"/>
                                                             </constraints>
@@ -112,17 +111,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="T9 Dialer" id="a37-p4-me0">
-                        <barButtonItem key="rightBarButtonItem" title="Sync" style="done" id="Z1s-5H-vOC">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="refresh" id="vNj-JW-ckv">
                             <connections>
-                                <action selector="syncContacts:" destination="BYZ-38-t0r" id="bzG-ed-qwS"/>
+                                <action selector="syncContacts:" destination="BYZ-38-t0r" id="RBQ-FQ-Ghd"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="6jG-ib-t9y"/>
                     </navigationItem>
                     <connections>
                         <outlet property="contactsView" destination="WUv-Y9-Qhu" id="XM1-OO-MJs"/>
                         <outlet property="searchBar" destination="mhL-PB-j9Q" id="Z9l-m3-kWX"/>
+                        <outlet property="settings" destination="6jG-ib-t9y" id="kNZ-Xq-1S7"/>
                         <outlet property="spinner" destination="V9I-5Z-3am" id="z9M-wz-AU1"/>
-                        <outlet property="syncButton" destination="Z1s-5H-vOC" id="QGK-ag-4wN"/>
+                        <outlet property="syncButton" destination="vNj-JW-ckv" id="Px2-Nd-Zap"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

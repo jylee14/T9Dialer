@@ -16,6 +16,7 @@ class T9ViewController: UIViewController {
     @IBOutlet weak var syncButton: UIBarButtonItem!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var contactsView: UITableView!
+    @IBOutlet weak var settings: UIBarButtonItem!
     
     //APPLICATION LOGIC VARIABLES
     private let context = AppDelegate.viewContext   //database context
@@ -34,6 +35,10 @@ class T9ViewController: UIViewController {
         searchBar.delegate = self
         contactsView.delegate = self
         contactsView.dataSource = self
+        
+        settings.title = "\u{2699}\u{0000FE0E}"
+        let settingsAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 28)]
+        settings.setTitleTextAttributes(settingsAttributes, for: .normal)
     }
     
     
@@ -148,12 +153,12 @@ class T9ViewController: UIViewController {
                 if char == " " {
                     continue
                 }
-                t9value.append(String(T9Value[char]!))
+                t9value.append(String(T9Value[char]!))  //this ASSUMES ascii only
             }
             
             guard contact.phoneNumbers.count > 0 else { continue }  //theres no phone number, don't process this one 
-            let tempContact = ContactItem(name: name, number: contact.phoneNumbers[0].value.stringValue,
-                                          t9: t9value, photo: contact.imageData)    //only process the first phone number
+            let tempContact = ContactItem(name: name, number: contact.phoneNumbers[0].value.stringValue,    //only process the first phone number
+                                          t9: t9value, photo: contact.imageData)
             T9ContactsArray.append(tempContact)
         }
         
