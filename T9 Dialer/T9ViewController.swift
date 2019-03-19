@@ -18,10 +18,10 @@ class T9ViewController: UIViewController {
     @IBOutlet weak var contactsView: UITableView!
     
     //APPLICATION LOGIC VARIABLES
-    fileprivate let context = AppDelegate.viewContext   //database context
-    fileprivate var searchBarTimer = Timer()    //to manage DB lookups
-    fileprivate var currentSearchNumber = ""    //what the user is current searching for
-    fileprivate var searchResult: [Contact]? = nil{
+    private let context = AppDelegate.viewContext   //database context
+    private var searchBarTimer = Timer()    //to manage DB lookups
+    private var currentSearchNumber = ""    //what the user is current searching for
+    private var searchResult: [Contact]? = nil{
         didSet{
             contactsView.reloadData()
         }
@@ -47,24 +47,38 @@ class T9ViewController: UIViewController {
             var permission = CNContactStore.authorizationStatus(for: .contacts) //does the app have permission right now?
             
             guard permission != .denied && permission != .restricted else {
-                //alert the user that this app needs contacts permission
+                let needPermissionAlert = UIAlertController(title: "This app needs access to your contacts",
+                                                            message: "Please grant permission in settings\n" +
+                                                                     "Setting -> Privacy ->\n Contacts -> T9Dialer",
+                                                            preferredStyle: .alert)
+                let OK = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                needPermissionAlert.addAction(OK)
+                self.parent?.present(needPermissionAlert, animated: true)
                 return
             }
             
-            if permission == .notDetermined{    //ask we dont have permission currently
+            if permission == .notDetermined{    //ask. we dont have permission currently
                 contacts.requestAccess(for: .contacts){(status, error) in
                     if status {
                         permission = .authorized
                     }else{
                         permission = .denied
+                        
                         //alert the user that the app needs contact access
+                        let needPermissionAlert = UIAlertController(title: "This app needs access to your contacts",
+                                                                    message: "Please grant permission in settings\n" +
+                                                                             "Setting -> Privacy ->\n Contacts -> T9Dialer",
+                                                                    preferredStyle: .alert)
+                        let OK = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                        needPermissionAlert.addAction(OK)
+                        self.parent?.present(needPermissionAlert, animated: true)
                         return
                     }
                 }
             }
             
             if permission == .authorized{
-                clearDatabase() //only while i figure out how to make the DB sync non-duplicate entities
+                clearDatabase()
                 
                 DispatchQueue.global(qos: .userInitiated).async{ [unowned self] in
                     var contactsArray:[CNContact] = []   //fetched contacts
@@ -78,6 +92,12 @@ class T9ViewController: UIViewController {
                     }catch{
                         print("failed to sync contacts")
                         //alert the user of failure
+                        let alert = UIAlertController(title: "Failed to sync contacts!",
+                                                      message: "Contact sync failed. Please try again",
+                                                      preferredStyle: .alert)
+                        let OK = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                        alert.addAction(OK)
+                        self.parent?.present(alert, animated: true)
                     }
                     
                     let assignedContacts = self.assignT9ValueTo(contactsArray)
@@ -102,12 +122,10 @@ class T9ViewController: UIViewController {
     
     private func clearDatabase(){
         let fetchRequest:NSFetchRequest<Contact> = Contact.fetchRequest()
-        do{
-            let results = try context.fetch(fetchRequest)
-            for contact in results{
-                context.delete(contact as NSManagedObject)
-            }
-        }catch{}
+        let results = try! context.fetch(fetchRequest)
+        for contact in results{
+            context.delete(contact as NSManagedObject)
+        }
     }
     
     private let T9Value: [Character: Int] = [
@@ -127,12 +145,15 @@ class T9ViewController: UIViewController {
             var t9value = ""
             
             for char in name{
-                if char == " " { continue }
+                if char == " " {
+                    continue
+                }
                 t9value.append(String(T9Value[char]!))
             }
             
             guard contact.phoneNumbers.count > 0 else { continue }  //theres no phone number, don't process this one 
-            let tempContact = ContactItem(name: name, number: contact.phoneNumbers[0].value.stringValue, t9: t9value, photo: contact.imageData)
+            let tempContact = ContactItem(name: name, number: contact.phoneNumbers[0].value.stringValue,
+                                          t9: t9value, photo: contact.imageData)    //only process the first phone number
             T9ContactsArray.append(tempContact)
         }
         
@@ -140,7 +161,7 @@ class T9ViewController: UIViewController {
     }
     
     //search for the given numeric sequence
-    fileprivate func search(_ text: String = ""){
+    private func search(_ text: String = ""){
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true), NSSortDescriptor(key: "number", ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "t9 contains %@", text)
