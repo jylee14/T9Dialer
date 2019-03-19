@@ -31,7 +31,7 @@ class ContactCell: UITableViewCell {
     
     private func clearPhoneNumber(_ number: String)->String{
         var processedNumber = ""
-        for char in number.characters{
+        for char in number{
             if "0"..."9" ~= char{
                 processedNumber.append(char)
             }

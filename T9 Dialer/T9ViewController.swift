@@ -126,7 +126,7 @@ class T9ViewController: UIViewController {
             let name = contact.givenName.lowercased() + " " + contact.familyName.lowercased() //dictionary expects lower cased string
             var t9value = ""
             
-            for char in name.characters{
+            for char in name{
                 if char == " " { continue }
                 t9value.append(String(T9Value[char]!))
             }
