@@ -14,6 +14,7 @@
 		BF5B33C01F5783F1005EEC7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5B33BE1F5783F1005EEC7C /* LaunchScreen.storyboard */; };
 		BF5B33C81F578406005EEC7C /* T9ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33C71F578406005EEC7C /* T9ViewController.swift */; };
 		BF5B33CA1F5787B8005EEC7C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B33C91F5787B8005EEC7C /* Contact.swift */; };
+		BF7349902240B25300F7AC4A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73498F2240B25300F7AC4A /* SettingsVC.swift */; };
 		BFC549F61F57E15400FA451E /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC549F51F57E15400FA451E /* ContactCell.swift */; };
 		BFC549F81F57E41A00FA451E /* ContactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC549F71F57E41A00FA451E /* ContactItem.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		BF5B33C11F5783F1005EEC7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5B33C71F578406005EEC7C /* T9ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T9ViewController.swift; sourceTree = "<group>"; };
 		BF5B33C91F5787B8005EEC7C /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = ../Contact.swift; sourceTree = "<group>"; };
+		BF73498F2240B25300F7AC4A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		BFC549F51F57E15400FA451E /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		BFC549F71F57E41A00FA451E /* ContactItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				BF5B33B61F5783F1005EEC7C /* Main.storyboard */,
+				BF73498F2240B25300F7AC4A /* SettingsVC.swift */,
 				BFC549F51F57E15400FA451E /* ContactCell.swift */,
 				BF5B33C71F578406005EEC7C /* T9ViewController.swift */,
 				BFC549F71F57E41A00FA451E /* ContactItem.swift */,
@@ -163,6 +166,7 @@
 				BFC549F81F57E41A00FA451E /* ContactItem.swift in Sources */,
 				BF5B33BB1F5783F1005EEC7C /* T9_Dialer.xcdatamodeld in Sources */,
 				BF5B33B31F5783F1005EEC7C /* AppDelegate.swift in Sources */,
+				BF7349902240B25300F7AC4A /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

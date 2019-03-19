@@ -41,6 +41,10 @@ class T9ViewController: UIViewController {
         settings.setTitleTextAttributes(settingsAttributes, for: .normal)
     }
     
+    @IBAction func goToSettings(_ sender: UIBarButtonItem) {
+        
+        performSegue(withIdentifier: "settingSegue", sender: sender)
+    }
     
     //tells the app to look through the stock contacts and initialize each contact with t9 value
     @IBAction func syncContacts(_ sender: Any) {
