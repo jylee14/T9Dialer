@@ -201,11 +201,10 @@ extension T9ViewController: UITableViewDelegate, UITableViewDataSource{
             contactCell.name.text = contacts[indexPath.row].name
             contactCell.number.text = contacts[indexPath.row].number
         }
-        
+
         return cell
     }
 }
-
 
 //implementing search bar capabilities
 extension T9ViewController: UISearchBarDelegate{

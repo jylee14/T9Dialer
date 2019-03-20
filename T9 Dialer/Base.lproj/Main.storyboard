@@ -58,12 +58,10 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6s-aN-HTY">
-                                                            <rect key="frame" x="260" y="0.0" width="100" height="72"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="6AF-J4-JcN"/>
-                                                            </constraints>
-                                                            <state key="normal" title="Call"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6s-aN-HTY" userLabel="CallButton">
+                                                            <rect key="frame" x="321" y="0.0" width="39" height="72"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <state key="normal" title="call"/>
                                                             <connections>
                                                                 <action selector="call:" destination="TCg-8C-Pha" eventType="touchUpInside" id="9Q9-Gy-xdN"/>
                                                             </connections>
@@ -86,6 +84,7 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="callButton" destination="U6s-aN-HTY" id="sQ7-tE-HUb"/>
                                                     <outlet property="contactPhoto" destination="BwS-bS-h7H" id="DNB-SF-3OQ"/>
                                                     <outlet property="name" destination="fpy-88-1Ww" id="y3n-tH-KAB"/>
                                                     <outlet property="number" destination="KQT-G8-KSa" id="TuK-6q-ogh"/>

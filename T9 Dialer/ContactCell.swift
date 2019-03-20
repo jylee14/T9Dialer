@@ -12,10 +12,13 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var contactPhoto: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
+    @IBOutlet weak var callButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        callButton.setTitle("📞\u{0000FE0E}", for: .normal)
     }
     
     @IBAction func call(_ sender: UIButton) {
