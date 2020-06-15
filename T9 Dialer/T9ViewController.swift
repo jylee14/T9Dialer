@@ -35,10 +35,6 @@ class T9ViewController: UIViewController {
         searchBar.delegate = self
         contactsView.delegate = self
         contactsView.dataSource = self
-        
-        settings.title = "\u{2699}\u{0000FE0E}"
-        let settingsAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 28)]
-        settings.setTitleTextAttributes(settingsAttributes, for: .normal)
     }
     
     @IBAction func goToSettings(_ sender: UIBarButtonItem) {
@@ -173,7 +169,7 @@ class T9ViewController: UIViewController {
     private func search(_ text: String = ""){
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true), NSSortDescriptor(key: "number", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "t9 contains %@", text)
+        fetchRequest.predicate = NSPredicate(format: "t9 contains %@ or number contains %@", text, text)
         
         searchResult = try? context.fetch(fetchRequest)
     }
@@ -193,10 +189,18 @@ extension T9ViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Contact", for: indexPath)
         
         if let contacts = searchResult, let contactCell = cell as? ContactCell{
-            if let imageData = contacts[indexPath.row].photo {
+            let contactAtIndex = contacts[indexPath.row]
+            
+            if let imageData = contactAtIndex.photo {
                 contactCell.contactPhoto.image = UIImage(data: imageData as Data)
             }else{
-                contactCell.contactPhoto.image = #imageLiteral(resourceName: "default")
+                if #available(iOS 13, *){
+                    if let firstInitial = contactAtIndex.name?.first {
+                        contactCell.contactPhoto.image = UIImage(systemName: "\(firstInitial).circle")
+                    } else {
+                        contactCell.contactPhoto.image = UIImage(systemName: "questionmark.circle")
+                    }
+                }
             }
             contactCell.name.text = contacts[indexPath.row].name
             contactCell.number.text = contacts[indexPath.row].number

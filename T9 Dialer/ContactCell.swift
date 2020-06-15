@@ -14,11 +14,16 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var callButton: UIButton!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        callButton.setTitle("📞\u{0000FE0E}", for: .normal)
+        if #available(iOS 13, *) {
+            callButton.setImage(UIImage(systemName: "phone"), for: .normal)
+            callButton.setTitle("", for: .normal)
+        } else {
+            callButton.setTitle("Call", for: .normal)
+        }
     }
     
     @IBAction func call(_ sender: UIButton) {
@@ -35,7 +40,7 @@ class ContactCell: UITableViewCell {
     private func clearPhoneNumber(_ number: String)->String{
         var processedNumber = ""
         for char in number{
-            if "0"..."9" ~= char{
+            if "0"..."9" ~= char{ // make sure that its a number
                 processedNumber.append(char)
             }
         }
